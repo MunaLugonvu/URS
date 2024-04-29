@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const bcrypt = require('bcrypt');
 
 const app = express();
 const PORT = 5000; 
@@ -27,20 +28,29 @@ db.run(`
 
 // Registration endpoint
 app.post('/register', (req, res) => {
-  const { username, email, password } = req.body;
-
-  // Insert user data into users table
-  const sql = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-  db.run(sql, [username, email, password], (err) => {
-    if (err) {
-      console.error('Error inserting user into database:', err);
-      res.status(500).json({ error: 'An error occurred while registering the user' });
-    } else {
-      console.log('User registered successfully');
-      res.sendStatus(200); // or res.json({ success: true });
-    }
+    const { username, email, password } = req.body;
+  
+    // Hash the password before storing it in the database
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) {
+        console.error('Error hashing password:', err);
+        res.status(500).json({ error: 'An error occurred while registering the user' });
+      } else {
+        // Insert user data (including hashed password) into the database
+        const sql = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+        
+        db.run(sql, [username, email, hash], (err) => {
+          if (err) {
+            console.error('Error inserting user into database:', err);
+            res.status(500).json({ error: 'An error occurred while registering the user' });
+          } else {
+            console.log('User registered successfully');
+            res.sendStatus(200);
+          }
+        });
+      }
+    });
   });
-});
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
