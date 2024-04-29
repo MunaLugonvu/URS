@@ -6,7 +6,7 @@ Simple user registration system
 ## Installation
 ### Clone the repository:
 
-> `git clone https://github.com/your_username/urs.git`
+> `git clone ` ** Insert clone link here **
 
 
 ### Install dependencies:
