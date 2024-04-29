@@ -3,11 +3,6 @@
 ## Overview
 Simple user registration system
 
-## Table of Contents
-Installation
-Usage
-Libraries/Frameworks Used
-
 ## Installation
 ### Clone the repository:
 
