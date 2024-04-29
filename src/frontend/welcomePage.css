@@ -1,0 +1,9 @@
+.welcome span{
+    font-weight: 900;
+}
+.welcome{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

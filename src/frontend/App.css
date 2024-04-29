@@ -3,8 +3,10 @@
 }
 
 .container{
+  flex-direction: column;
   max-width: 440px;
   padding: 0 20px;
+  display: flex;
   margin: 170px auto;
 }
 
@@ -24,7 +26,19 @@
 .link span{
   color: #16a085;
   text-decoration: none;
+  cursor: pointer;
 }
 .link span:hover{
   text-decoration: underline;
+  cursor: 'pointer'
+}
+
+.button  {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #16a085;
+  border: 1px solid #16a085;
+  cursor: pointer;
 }

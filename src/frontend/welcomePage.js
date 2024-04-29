@@ -1,11 +1,14 @@
 import React from 'react';
+import "./welcomePage.css"
 
 const WelcomePage = ({ username }) => {
   return (
-    <div>
-      <h2>Welcome, {username}!</h2>
+    <>
+     <div className='welcome'>
+      <h2>Welcome, <span>{username}! </span></h2>
       <p>This is your welcome page.</p>
-    </div>
+    </div></>
+   
   );
 };
 

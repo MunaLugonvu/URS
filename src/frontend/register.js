@@ -25,11 +25,13 @@ const RegisterForm = ({ onRegister }) => {
         <i className='email-icon'><MdMail/></i>
           <input type="email" id="email" placeholder= "Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <div className='field'>
+        <i className='user-icon'><FaLock/></i>
+          <input type="password" id="password" placeholder= "Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <button type="submit">Register</button>
+        <div className='field button'>
+        <input type="submit" value="Register"/>
+        </div>
        
       </form>
       {/* <p>Already have an account? <button type="button" onClick={switchToLoginForm}>Login</button></p> */}

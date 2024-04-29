@@ -12,7 +12,7 @@ const App = () => {
   // Function to handle user registration
   const handleRegister = async (userData) => {
     try {
-      // Send registration data to backend (e.g., using fetch or axios)
+      // send request to db
       const response = await fetch("http://localhost:5000/register", {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ const App = () => {
   };
 
   // Function to handle user login
-  // Function to handle user login
+  
   const handleLogin = async (userData) => {
     try {
       // Send login data to backend
@@ -57,8 +57,6 @@ const App = () => {
         setLoggedIn(true);
         setUsername(data.user.username);
 
-        // Optionally, you can perform additional actions such as redirecting to another page
-        // history.push('/dashboard');
       } else {
         // Login failed, display error message
         console.error("Login failed");
@@ -70,9 +68,9 @@ const App = () => {
 
   // Function to handle user logout
   const handleLogout = () => {
-    // Implement logout logic here (e.g., clearing session)
+    
     console.log("Logging out user");
-    // For demo purposes, just update state
+    
     setLoggedIn(false);
     setUsername("");
   };
@@ -88,10 +86,10 @@ const App = () => {
   return (
     <div className="container">
       {loggedIn ? (
-        <div>
+      <>
           <WelcomePage username={username} />
-          <button onClick={handleLogout}>Logout</button>
-        </div>
+          <button className="button" onClick={handleLogout}>Logout</button>
+        </>
       ) : (
         <div className="wrapper">
           {!showLoginForm ? (
@@ -104,7 +102,7 @@ const App = () => {
               <p>
                 Do not have an account?{" "}
                 <span onClick={switchForm}>Register</span>
-                {/* <button onClick={switchForm}>Register</button> */}
+              
               </p>
             </div>
           )}
@@ -112,7 +110,7 @@ const App = () => {
             <div className="link">
               <p>
                 Already have an account?{" "}
-                {/* <button onClick={switchForm}>Login</button> */}
+                
                 <span onClick={switchForm}>Login</span>
               </p>
             </div>
